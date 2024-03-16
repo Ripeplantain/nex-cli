@@ -12,7 +12,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "commander": "^12.0.0"
+    "commander": "^12.0.0",
+    "ejs": "^3.1.9",
+    "fs-extra": "^11.2.0"
   },
   "devDependencies": {
     "eslint": "^8.57.0",
