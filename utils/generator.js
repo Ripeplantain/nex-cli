@@ -5,7 +5,7 @@ import path from 'path';
 const dirname = path.dirname(new URL(import.meta.url).pathname);
 
 export default function generateFile(projectName) {
-  const templateDir = path.resolve(dirname, '../templates');
+  const templateDir = path.resolve(dirname, '../templates/express-with-ejs');
   const targetDir = path.resolve(process.cwd(), projectName);
 
   fs.copySync(templateDir, targetDir);

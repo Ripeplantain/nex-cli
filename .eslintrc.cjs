@@ -23,5 +23,6 @@ module.exports = {
     'no-console': 'off',
     'import/extensions': 'off',
     'prettier/prettier': 'error',
+    'import/no-extraneous-dependencies': 'off',
   },
 };
