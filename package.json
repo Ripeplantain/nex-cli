@@ -1,12 +1,15 @@
 {
-  "name": "nex-cli",
-  "version": "1.0.0",
-  "description": "",
+  "name": "@codetanna/nex-cli",
+  "version": "1.0.2",
+  "description": "This is a next gen cli for creating and managing your node projects",
   "main": "cli.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint . --ext .js"
+  },
+  "bin": {
+    "cli": "./cli.js"
   },
   "keywords": [],
   "author": "",
