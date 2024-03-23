@@ -5,7 +5,9 @@ import express from 'express';
 
 const app = express();
 
+app.set('views', './src/views');
 app.set('view engine', 'ejs');
+app.use(express.static('./src/public'));
 
 app.get('/', (req, res) => {
   res.render('index', { projectName: '<%= projectName %>' });
