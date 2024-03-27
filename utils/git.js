@@ -7,11 +7,10 @@ export async function initializeGitRepository(directory) {
     exec(`cd ${directory} && git init`);
     console.log('Git repository initialized successfully! 🎉');
   } catch (error) {
-    console.error(error.message);
+    console.error(error);
   }
 }
 
 export function addGitIgnore(directory) {
   fs.writeFileSync(`${directory}/.gitignore`, defaultGitIgnoreRules);
-  console.log('Added .gitignore file successfully! 🎉');
 }

@@ -2,8 +2,12 @@
 
 import { program } from 'commander';
 import generateExpressProject from './utils/generator.js';
-import inquireProjectTypePrompt, { inquireAddGit } from './utils/prompt.js';
+import inquireProjectTypePrompt, {
+  inquireAddGit,
+  inquireLinting,
+} from './utils/prompt.js';
 import { initializeGitRepository, addGitIgnore } from './utils/git.js';
+import addEsLint from './utils/lint.js';
 
 program
   .version('0.0.1')
@@ -23,6 +27,12 @@ program
               initializeGitRepository(name);
               addGitIgnore(name);
             }
+            inquireLinting().then(lintingAnswer => {
+              if (lintingAnswer.addLinting) {
+                addEsLint(name);
+                console.log('Lint added successfully! 🎉');
+              }
+            });
           });
           break;
         case 'js-backend-api':

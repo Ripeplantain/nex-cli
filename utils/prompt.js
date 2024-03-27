@@ -22,3 +22,14 @@ export function inquireAddGit() {
     },
   ]);
 }
+
+export function inquireLinting() {
+  return inquirer.prompt([
+    {
+      type: 'confirm',
+      name: 'addLinting',
+      message: 'Would you like to add linting?',
+      default: true,
+    },
+  ]);
+}
