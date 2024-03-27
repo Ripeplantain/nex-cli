@@ -2,7 +2,8 @@
 
 import { program } from 'commander';
 import generateExpressProject from './utils/generator.js';
-import inquireProjectTypePrompt from './utils/prompt.js';
+import inquireProjectTypePrompt, { inquireAddGit } from './utils/prompt.js';
+import { initializeGitRepository, addGitIgnore } from './utils/git.js';
 
 program
   .version('0.0.1')
@@ -17,6 +18,12 @@ program
       switch (answers.projectType) {
         case 'express-with-ejs':
           generateExpressProject(name, answers.projectType);
+          inquireAddGit().then(gitAnswer => {
+            if (gitAnswer.addGit) {
+              initializeGitRepository(name);
+              addGitIgnore(name);
+            }
+          });
           break;
         case 'js-backend-api':
           console.log('Generating js-backend-api');

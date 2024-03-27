@@ -11,3 +11,14 @@ export default function inquireProjectTypePrompt() {
     },
   ]);
 }
+
+export function inquireAddGit() {
+  return inquirer.prompt([
+    {
+      type: 'confirm',
+      name: 'addGit',
+      message: 'Would you like to add a git repository?',
+      default: true,
+    },
+  ]);
+}
