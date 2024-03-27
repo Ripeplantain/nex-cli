@@ -45,3 +45,12 @@ Create
 ```
 npx cli create <project_name>
 ```
+
+Add model
+
+* This command allows you to add a model to your project
+
+  ```
+  npx cli add:model <project_name>
+
+  ```

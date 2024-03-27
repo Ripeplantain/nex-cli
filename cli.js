@@ -8,6 +8,9 @@ import inquireProjectTypePrompt, {
 } from './utils/prompt.js';
 import { initializeGitRepository, addGitIgnore } from './utils/git.js';
 import addEsLint from './utils/lint.js';
+import addModel from './utils/model.js';
+import addController from './utils/controller.js';
+import addRoute from './utils/route.js';
 
 program
   .version('0.0.1')
@@ -45,6 +48,27 @@ program
           console.log('Unknown project type');
       }
     });
+  });
+
+program
+  .command('add:model <model-name>')
+  .description('Add a new model to the project')
+  .action(name => {
+    addModel(name);
+  });
+
+program
+  .command('add:controller <controller-name>')
+  .description('Add a new controller to the project')
+  .action(name => {
+    addController(name);
+  });
+
+program
+  .command('add:route <route-name>')
+  .description('Add a new route to the project')
+  .action(name => {
+    addRoute(name);
   });
 
 program.parse(process.argv);
