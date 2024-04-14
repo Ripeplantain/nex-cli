@@ -11,6 +11,7 @@ import addEsLint from './utils/lint.js';
 import addModel from './utils/model.js';
 import addController from './utils/controller.js';
 import addRoute from './utils/route.js';
+import addService from './utils/service.js';
 
 program
   .version('0.0.1')
@@ -69,6 +70,13 @@ program
   .description('Add a new route to the project')
   .action(name => {
     addRoute(name);
+  });
+
+program
+  .command('add:service <service-name>')
+  .description('Add a new service to the project')
+  .action(name => {
+    addService(name);
   });
 
 program.parse(process.argv);
