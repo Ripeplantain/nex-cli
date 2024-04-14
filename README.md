@@ -54,3 +54,31 @@ Add model
   npx cli add:model <project_name>
 
   ```
+
+Add controller
+
+* This command allows you  to add a controller to your project
+
+  ```
+  nex cli add:controller <controller_name>
+  ```
+
+Add route
+
+* This command allows you to add a route to your project
+
+  ```
+  nex cli add:route <route_name>
+  ```
+
+Add service
+
+* This command allows you to add a service to your project
+
+  ```
+  nex cli add:service <service_name>
+  ```
+
+## Authors
+
+Emmanuel Gyang [LinkedIn Account](https://www.linkedin.com/in/emmanuel-gyang/) <irvingmanny@gmail.com>
