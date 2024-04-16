@@ -8,7 +8,10 @@ const app = express();
 app.use(express.json());
 
 app.get('/', (req, res) => {
-  res.json({ message: 'Hello World🤩🤗' });
+  res.json({
+    message: 'Hello World🤩🤗',
+    info: 'https://www.npmjs.com/package/@codetanna/nex-cli',
+  });
 });
 
 app.listen(3000, () => {
