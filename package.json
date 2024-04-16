@@ -1,6 +1,6 @@
 {
   "name": "@codetanna/nex-cli",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "This is a next gen cli for creating and managing your node projects",
   "main": "cli.js",
   "type": "module",

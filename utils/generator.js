@@ -5,6 +5,7 @@ import path from 'path';
 import { initializeGitRepository, addGitIgnore } from './git.js';
 import addEsLint from './lint.js';
 import { inquireAddGit, inquireLinting } from './prompt.js';
+import tsConfig from '../constants/tsConfig.js';
 
 const dirname = path.dirname(new URL(import.meta.url).pathname);
 
@@ -48,6 +49,31 @@ export function generateJsBackendApi(projectName) {
   });
 }
 
+export function generateTsBackendApi(projectName) {
+  const templateDir = path.resolve(dirname, '../templates/web-api-ts');
+  const targetDir = path.resolve(process.cwd(), projectName);
+
+  fs.copySync(templateDir, targetDir);
+
+  const templateFiles = fs.readdirSync(targetDir);
+
+  templateFiles.forEach(file => {
+    const filePath = path.resolve(targetDir, file);
+    const stats = fs.statSync(filePath);
+
+    if (stats.isFile()) {
+      const template = fs.readFileSync(filePath, 'utf-8');
+      const content = ejs.render(template, { projectName });
+      fs.writeFileSync(filePath, content);
+    }
+  });
+}
+
+const inititalizeTypescript = program => {
+  console.log('doing something');
+  fs.writeFileSync(`${program}/.prettierrc`, tsConfig);
+};
+
 export const handleProjectCreation = async (name, projectType) => {
   switch (projectType) {
     case 'express-with-ejs':
@@ -57,7 +83,8 @@ export const handleProjectCreation = async (name, projectType) => {
       generateJsBackendApi(name);
       break;
     case 'web-api-ts':
-      console.log('Generating ts-backend-api');
+      generateTsBackendApi(name);
+      inititalizeTypescript(name);
       break;
     default:
       console.log('Unknown project type');
