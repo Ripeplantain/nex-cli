@@ -1,17 +1,13 @@
 #!/usr/bin/env node
 
 import { program } from 'commander';
-import generateExpressProject from './utils/generator.js';
-import inquireProjectTypePrompt, {
-  inquireAddGit,
-  inquireLinting,
-} from './utils/prompt.js';
-import { initializeGitRepository, addGitIgnore } from './utils/git.js';
-import addEsLint from './utils/lint.js';
+
 import addModel from './utils/model.js';
 import addController from './utils/controller.js';
 import addRoute from './utils/route.js';
 import addService from './utils/service.js';
+import inquireProjectTypePrompt from './utils/prompt.js';
+import { handleProjectCreation } from './utils/generator.js';
 
 program
   .version('0.0.1')
@@ -20,35 +16,10 @@ program
 program
   .command('create <project-name>')
   .description('Create a new project')
-  .action(name => {
+  .action(async name => {
     console.log('Creating a new project:', name, '🚀');
-    inquireProjectTypePrompt().then(answers => {
-      switch (answers.projectType) {
-        case 'express-with-ejs':
-          generateExpressProject(name, answers.projectType);
-          inquireAddGit().then(gitAnswer => {
-            if (gitAnswer.addGit) {
-              initializeGitRepository(name);
-              addGitIgnore(name);
-            }
-            inquireLinting().then(lintingAnswer => {
-              if (lintingAnswer.addLinting) {
-                addEsLint(name);
-                console.log('Lint added successfully! 🎉');
-              }
-            });
-          });
-          break;
-        case 'js-backend-api':
-          console.log('Generating js-backend-api');
-          break;
-        case 'ts-backend-api':
-          console.log('Generating ts-backend-api');
-          break;
-        default:
-          console.log('Unknown project type');
-      }
-    });
+    const answers = await inquireProjectTypePrompt();
+    await handleProjectCreation(name, answers.projectType);
   });
 
 program
