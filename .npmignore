@@ -1,0 +1,9 @@
+tests
+.git
+.gitignore
+LICENSE
+
+#ignore documentation files
+docs/*
+docs
+mkdocs.yml

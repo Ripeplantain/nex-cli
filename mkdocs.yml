@@ -1,0 +1,43 @@
+site_name: Nex-Cli Documentation
+theme: 
+  name: material
+  palette:
+    primary: "blue"
+    accent: "light blue"
+  font:
+    text: "Roboto"
+    code: "Roboto Mono"
+  language: "en"
+  features:
+    - navigation.tabs
+    - navigation.expand
+    - navigation.top
+    - navigation.bottom
+    - navigation.sidebar
+    - navigation.scrollspy
+    - navigation.collapsible
+    - navigation.tabs
+    - navigation.prev_next
+    - navigation.edit_on_github
+    - navigation.search
+    - navigation.footer
+    - navigation.meta
+    - navigation.meta_author
+    - navigation.meta_description
+    - navigation.meta_keywords
+    - navigation.meta_viewport
+    - navigation.meta_robots
+    - navigation.meta_google
+    - navigation.meta_open_graph
+    - navigation.meta_twitter
+    - navigation.meta_facebook
+    - navigation.meta_theme_color
+    - navigation.meta_favicon
+    - navigation.meta_apple_touch_icon
+    - navigation.meta_apple_touch_icon_precomposed
+    - navigation.meta_apple_touch_icon_sizes
+    - navigation.meta_apple_touch_icon_color
+    - navigation.meta_apple_touch_icon_color_precomposed
+    - navigation.meta_apple_touch_icon_color
+nav:
+  - Introduction: index.md
