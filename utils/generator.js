@@ -50,7 +50,7 @@ export function generateJsBackendApi(projectName) {
 }
 
 export function generateTsBackendApi(projectName) {
-  const templateDir = path.resolve(dirname, '../templates/web-api-ts');
+  const templateDir = path.resolve(dirname, '../templates/webapi-with-ts');
   const targetDir = path.resolve(process.cwd(), projectName);
 
   fs.copySync(templateDir, targetDir);
@@ -82,7 +82,7 @@ export const handleProjectCreation = async (name, projectType) => {
     case 'webapi-with-js':
       generateJsBackendApi(name);
       break;
-    case 'web-api-ts':
+    case 'webapi-with-ts':
       generateTsBackendApi(name);
       inititalizeTypescript(name);
       break;
