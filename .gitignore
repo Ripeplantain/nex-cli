@@ -34,3 +34,8 @@ sessions/
 # OS generated files
 .DS_Store
 Thumbs.db
+
+# vitepress 
+docs/.vitepress/dist/
+docs/.vitepress/node_modules/
+docs/.vitepress/.cache/

@@ -1,5 +1,6 @@
-Ready to dive in? Follow these steps to create your first Nex CLI project:
+# Quick Start
 
+Ready to dive in? Follow these steps to create your first Nex CLI project:
 
 ## Create a new project
 

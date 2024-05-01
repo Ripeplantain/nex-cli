@@ -1,4 +1,6 @@
-## Create
+# How to Use Nex-Cli
+
+## Create Project
 
 Create a new project with Nex CLI.
 
