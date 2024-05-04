@@ -1,4 +1,9 @@
 import { exec } from 'child_process';
+import fs from 'fs';
+import {
+  javascriptControllerTemplate,
+  typescriptControllerTemplate,
+} from '../constants/controllerTemplate';
 
 export default function addController(name) {
   const controllerName = name.charAt(0).toUpperCase() + name.slice(1);

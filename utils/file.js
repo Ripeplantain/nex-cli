@@ -7,3 +7,4 @@ const templateDir = path.resolve(dirname, '../templates');
 export default function getDirectoriesInTemplates() {
   return fs.readdirSync(templateDir);
 }
+

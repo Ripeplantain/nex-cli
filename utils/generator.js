@@ -4,7 +4,11 @@ import path from 'path';
 
 import { initializeGitRepository, addGitIgnore } from './git.js';
 import addEsLint from './lint.js';
-import { inquireAddGit, inquireLinting } from './prompt.js';
+import {
+  inquireAddGit,
+  inquireLinting,
+  inquireDatabaseConnection,
+} from './prompt.js';
 import tsConfig from '../constants/tsConfig.js';
 
 const dirname = path.dirname(new URL(import.meta.url).pathname);
@@ -101,5 +105,10 @@ export const handleProjectCreation = async (name, projectType) => {
   if (lintingAnswer.addLinting) {
     addEsLint(name);
     console.log('Lint added successfully! 🎉');
+  }
+
+  const databaseAnswer = await inquireDatabaseConnection();
+  if (databaseAnswer.addDatabase) {
+    console.log('Database connection added successfully! 🎉');
   }
 };
