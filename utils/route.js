@@ -1,10 +1,12 @@
 import fs from 'fs';
 import routeTemplate from '../constants/routeTemplate.js';
+import { doesProjectExist } from './file.js';
 
 export default function addRoute(name) {
   const routeName = name.toLowerCase();
   const routesDirectory = 'src/routes';
-  const indexFilePath = 'src/routes/index.js';
+  const isTypescript = doesProjectExist('tsconfig.json');
+  const indexFilePath = `src/routes/index.${isTypescript ? 'ts' : 'js'}`;
 
   try {
     if (!fs.existsSync(routesDirectory)) {
@@ -18,7 +20,7 @@ export default function addRoute(name) {
     }
 
     fs.writeFileSync(
-      `${routesDirectory}/${routeName}.routes.js`,
+      `${routesDirectory}/${routeName}.routes.${isTypescript ? 'ts' : 'js'}`,
       routeTemplate
     );
   } catch (error) {
