@@ -14,12 +14,24 @@ program
   .description('Nex-cli is the next generation of cli tools🤖👾🐱‍🏍');
 
 program
-  .command('create <project-name>')
+  .command('create')
+  .argument('<name>')
   .description('Create a new project')
-  .action(async name => {
-    console.log('Creating a new project:', name, '🚀');
-    const answers = await inquireProjectTypePrompt();
-    await handleProjectCreation(name, answers.projectType);
+  .option('-e, --ejs', 'Create ejs project')
+  .option('-j, --js', 'Create js backend project')
+  .option('-t, --ts', 'Create typescript backend project')
+  .action(async (name, options) => {
+    if (options.ejs) {
+      handleProjectCreation(name, 'express-with-ejs');
+    } else if (options.js) {
+      handleProjectCreation(name, 'webapi-with-ts');
+    } else if (options.ts) {
+      handleProjectCreation(name, 'webapi-with-js');
+    } else {
+      console.log('Creating a new project:', name, '🚀');
+      const answers = await inquireProjectTypePrompt();
+      await handleProjectCreation(name, answers.projectType);
+    }
   });
 
 program
