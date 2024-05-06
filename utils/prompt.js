@@ -33,14 +33,3 @@ export function inquireLinting() {
     },
   ]);
 }
-
-export function inquireDatabaseConnection() {
-  return inquirer.prompt([
-    {
-      type: 'confirm',
-      name: 'addDatabase',
-      message: 'Would you like to add a database connection?',
-      default: true,
-    },
-  ]);
-}
