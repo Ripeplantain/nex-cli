@@ -6,6 +6,7 @@ import addModel from './utils/model.js';
 import addController from './utils/controller.js';
 import addRoute from './utils/route.js';
 import addService from './utils/service.js';
+import addMiddleware from './utils/middleware.js';
 import inquireProjectTypePrompt from './utils/prompt.js';
 import { handleProjectCreation } from './utils/generator.js';
 
@@ -60,6 +61,13 @@ program
   .description('Add a new service to the project')
   .action(name => {
     addService(name);
+  });
+
+program
+  .command('add:middleware <middleware-name>')
+  .description('Add a new middleware to the project')
+  .action(name => {
+    addMiddleware(name);
   });
 
 program.parse(process.argv);
