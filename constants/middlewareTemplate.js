@@ -1,17 +1,19 @@
 function jsMiddlewareTemplate(name) {
   return `import express from 'express'
+import logger from '../helper/logger.js'
     
 export const ${name} = (req, res, next) => {
-    console.log('middleware working');
+    logger.info('middleware working');
     next();
 }`;
 }
 
 function tsMiddlewareTemplate(name) {
   return `import express from 'express';
+import logger from '../helper/logger';
         
 export const ${name} = (req: express.Request, res: express.Response, next: express.NextFunction) => {
-    console.log('middleware working');
+    logger.info('middleware working');
     next();
 }`;
 }

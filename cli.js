@@ -25,9 +25,9 @@ program
     if (options.ejs) {
       handleProjectCreation(name, 'express-with-ejs');
     } else if (options.js) {
-      handleProjectCreation(name, 'webapi-with-ts');
-    } else if (options.ts) {
       handleProjectCreation(name, 'webapi-with-js');
+    } else if (options.ts) {
+      handleProjectCreation(name, 'webapi-with-ts');
     } else {
       console.log('Creating a new project:', name, '🚀');
       const answers = await inquireProjectTypePrompt();
