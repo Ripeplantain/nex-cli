@@ -25,7 +25,7 @@ Nex CLI supports integration with the Jest testing framework for adding comprehe
 
 # Installation
 
-To install Nex CLI globally, run:
+To install Nex CLI, run:
 
 ```bash
 npm i @codetanna/nex-cli

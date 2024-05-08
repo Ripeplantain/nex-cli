@@ -60,7 +60,7 @@ Add controller
 * This command allows you  to add a controller to your project
 
   ```
-  cli add:controller <controller_name>
+  npx cli add:controller <controller_name>
   ```
 
 Add route
@@ -68,7 +68,7 @@ Add route
 * This command allows you to add a route to your project
 
   ```
-  cli add:route <route_name>
+  npx cli add:route <route_name>
   ```
 
 Add service
@@ -76,7 +76,7 @@ Add service
 * This command allows you to add a service to your project
 
   ```
-  cli add:service <service_name>
+  npx cli add:service <service_name>
   ```
 
 ## Using flags
@@ -84,35 +84,35 @@ Add service
 * Create project with ejs
 
   ```
-  cli create <project_name> -e
+  npx cli create <project_name> -e
   ```
   ```
-  cli create <project_name> --ejs
+  npx cli create <project_name> --ejs
   ```
 
 * Create project for javascript backend 
 
   ```
-  cli create <project_name> -j
+  npx cli create <project_name> -js
   ```
   ```
-  cli create <project_name> -js
+  npx cli create <project_name> --javascript
   ```
 
 * Create project for typescript backend 
   ```
-  cli create <project_name> -t
+  npx cli create <project_name> -t
   ```
   ```
-  cli create <project_name> -ts
+  npx cli create <project_name> --typescript
   ```
 
 * Opening man page for any of our commands
   ```
-  cli add -h
+  npx cli add -h
   ```
   ```
-  cli add --help
+  npx cli add --help
   ```
 
 ## Authors

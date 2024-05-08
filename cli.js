@@ -19,14 +19,14 @@ program
   .argument('<name>')
   .description('Create a new project')
   .option('-e, --ejs', 'Create ejs project')
-  .option('-j, --js', 'Create js backend project')
-  .option('-t, --ts', 'Create typescript backend project')
+  .option('-js, --javascript', 'Create js backend project')
+  .option('-ts, --typescript', 'Create typescript backend project')
   .action(async (name, options) => {
     if (options.ejs) {
       handleProjectCreation(name, 'express-with-ejs');
-    } else if (options.js) {
+    } else if (options.javascript) {
       handleProjectCreation(name, 'webapi-with-js');
-    } else if (options.ts) {
+    } else if (options.typescript) {
       handleProjectCreation(name, 'webapi-with-ts');
     } else {
       console.log('Creating a new project:', name, '🚀');
