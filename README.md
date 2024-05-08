@@ -1,4 +1,4 @@
-# Nex Cli by Codetanna
+# Nex-cli by Codetanna
 
 This is a cli tool to help you when building your node applications
 
@@ -60,7 +60,7 @@ Add controller
 * This command allows you  to add a controller to your project
 
   ```
-  nex cli add:controller <controller_name>
+  cli add:controller <controller_name>
   ```
 
 Add route
@@ -68,7 +68,7 @@ Add route
 * This command allows you to add a route to your project
 
   ```
-  nex cli add:route <route_name>
+  cli add:route <route_name>
   ```
 
 Add service
@@ -76,7 +76,43 @@ Add service
 * This command allows you to add a service to your project
 
   ```
-  nex cli add:service <service_name>
+  cli add:service <service_name>
+  ```
+
+## Using flags with our cli
+
+* Create project with ejs
+
+  ```
+  cli create <project_name> -e
+  ```
+  ```
+  cli create <project_name> --ejs
+  ```
+
+* Create project for javascript backend 
+
+  ```
+  cli create <project_name> -j
+  ```
+  ```
+  cli create <project_name> -js
+  ```
+
+* Create project for typescript backend 
+  ```
+  cli create <project_name> -t
+  ```
+  ```
+  cli create <project_name> -ts
+  ```
+
+* Opening man page for any of our commands
+  ```
+  cli add -h
+  ```
+  ```
+  cli add --help
   ```
 
 ## Authors
