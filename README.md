@@ -79,7 +79,7 @@ Add service
   cli add:service <service_name>
   ```
 
-## Using flags with our cli
+## Using flags
 
 * Create project with ejs
 
