@@ -2,9 +2,10 @@ import path from 'path';
 import fs from 'fs';
 
 const dirname = path.dirname(new URL(import.meta.url).pathname);
-const templateDir = path.resolve(dirname, '../templates');
+const templateDir = path.resolve(dirname, '..', 'templates');
 
 export default function getDirectoriesInTemplates() {
+  console.log(templateDir);
   return fs.readdirSync(templateDir);
 }
 

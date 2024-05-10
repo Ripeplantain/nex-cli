@@ -10,7 +10,11 @@ import tsConfig from '../constants/tsConfig.js';
 const dirname = path.dirname(new URL(import.meta.url).pathname);
 
 export default function generateExpressProject(projectName) {
-  const templateDir = path.resolve(dirname, '../templates/express-with-ejs');
+  const templateDir = path.resolve(
+    dirname,
+    '..',
+    '/templates/express-with-ejs'
+  );
   const targetDir = path.resolve(process.cwd(), projectName);
 
   fs.copySync(templateDir, targetDir);
@@ -30,7 +34,7 @@ export default function generateExpressProject(projectName) {
 }
 
 export function generateJsBackendApi(projectName) {
-  const templateDir = path.resolve(dirname, '../templates/webapi-with-js');
+  const templateDir = path.resolve(dirname, '..', '/templates/webapi-with-js');
   const targetDir = path.resolve(process.cwd(), projectName);
 
   fs.copySync(templateDir, targetDir);
@@ -50,7 +54,7 @@ export function generateJsBackendApi(projectName) {
 }
 
 export function generateTsBackendApi(projectName) {
-  const templateDir = path.resolve(dirname, '../templates/webapi-with-ts');
+  const templateDir = path.resolve(dirname, '..', 'templates/webapi-with-ts');
   const targetDir = path.resolve(process.cwd(), projectName);
 
   fs.copySync(templateDir, targetDir);
@@ -70,7 +74,6 @@ export function generateTsBackendApi(projectName) {
 }
 
 const inititalizeTypescript = program => {
-  console.log('doing something');
   fs.writeFileSync(`${program}/.prettierrc`, tsConfig);
 };
 
