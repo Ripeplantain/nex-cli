@@ -1,16 +1,18 @@
 import fs from 'fs-extra';
 import ejs from 'ejs';
 import path from 'path';
+import { fileURLToPath } from 'url';
 
 import { initializeGitRepository, addGitIgnore } from './git.js';
 import addEsLint from './lint.js';
 import { inquireAddGit, inquireLinting } from './prompt.js';
 import tsConfig from '../constants/tsConfig.js';
 
-const dirname = path.dirname(new URL(import.meta.url).pathname);
+const fileName = fileURLToPath(import.meta.url);
+const dirname = path.dirname(fileName);
 
 export default function generateExpressProject(projectName) {
-  const templateDir = path.resolve(dirname, '..', 'templates/express-with-ejs');
+  const templateDir = path.join(dirname, '..', 'templates', 'express-with-ejs');
   const targetDir = path.resolve(process.cwd(), projectName);
 
   fs.copySync(templateDir, targetDir);
@@ -30,7 +32,7 @@ export default function generateExpressProject(projectName) {
 }
 
 export function generateJsBackendApi(projectName) {
-  const templateDir = path.resolve(dirname, '..', 'templates/webapi-with-js');
+  const templateDir = path.join(dirname, '..', 'templates', 'webapi-with-js');
   const targetDir = path.resolve(process.cwd(), projectName);
 
   fs.copySync(templateDir, targetDir);
@@ -50,7 +52,7 @@ export function generateJsBackendApi(projectName) {
 }
 
 export function generateTsBackendApi(projectName) {
-  const templateDir = path.resolve(dirname, '..', 'templates/webapi-with-ts');
+  const templateDir = path.join(dirname, '..', 'templates', 'webapi-with-ts');
   const targetDir = path.resolve(process.cwd(), projectName);
 
   fs.copySync(templateDir, targetDir);
