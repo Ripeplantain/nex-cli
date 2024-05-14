@@ -7,6 +7,7 @@ import addController from './utils/controller.js';
 import addRoute from './utils/route.js';
 import addService from './utils/service.js';
 import addMiddleware from './utils/middleware.js';
+import addTest from './utils/test.js';
 import inquireProjectTypePrompt from './utils/prompt.js';
 import { handleProjectCreation } from './utils/generator.js';
 
@@ -68,6 +69,14 @@ program
   .description('Add a new middleware to the project')
   .action(name => {
     addMiddleware(name);
+  });
+
+program
+  .command('add:test')
+  .description('Add a new test to the project')
+  .action(() => {
+    console.log('Adding a test to your project 🧪');
+    addTest();
   });
 
 program.parse(process.argv);
