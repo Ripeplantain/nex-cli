@@ -79,6 +79,22 @@ Add service
   npx cli add:service <service_name>
   ```
 
+Add Linting
+
+* This command allows you to add eslinting as well as prettier to your project
+
+  ```
+  npx cli add:lint
+  ```
+
+Add Test
+
+* This command allows you to add test to your project
+
+  ```
+  npx cli add:test
+  ```
+
 ## Using flags
 
 * Create project with ejs
