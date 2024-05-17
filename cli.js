@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 import { program } from 'commander';
+import { exec } from 'child_process';
 
 import addModel from './utils/model.js';
 import addController from './utils/controller.js';
@@ -10,6 +11,7 @@ import addMiddleware from './utils/middleware.js';
 import addTest from './utils/test.js';
 import inquireProjectTypePrompt from './utils/prompt.js';
 import { handleProjectCreation } from './utils/generator.js';
+import addEsLint from './utils/lint.js';
 
 program
   .version('0.0.1')
@@ -22,6 +24,8 @@ program
   .option('-e, --ejs', 'Create ejs project')
   .option('-js, --javascript', 'Create js backend project')
   .option('-ts, --typescript', 'Create typescript backend project')
+  .option('-g, --git', 'Initialize git repository')
+  .option('-l, --lint', 'Add linting to the project')
   .action(async (name, options) => {
     if (options.ejs) {
       handleProjectCreation(name, 'express-with-ejs');
@@ -77,6 +81,34 @@ program
   .action(() => {
     console.log('Adding a test to your project 🧪');
     addTest();
+  });
+
+program
+  .command('add:lint')
+  .description('Add linting to your project')
+  .action(() => {
+    console.log('We are adding linting to your project');
+    exec('npx eslint --version', (error, stdout) => {
+      if (error) {
+        console.error(`exec error: ${error}`);
+        return;
+      }
+      if (stdout.startsWith('v')) {
+        console.log(stdout);
+        console.log('ESLint is already installed');
+      }
+    });
+
+    exec('npx eslint --version', (error, stdout) => {
+      if (error) {
+        console.error(`exec error: ${error}`);
+        return;
+      }
+      if (stdout.startsWith('v')) {
+        console.log('ESLint is already installed');
+      }
+    });
+    addEsLint(process.cwd());
   });
 
 program.parse(process.argv);
