@@ -1,31 +1,20 @@
 # Introduction
 
-Welcome to Nex CLI, your go-to tool for simplifying Node.js application and API development. Whether you're coding in JavaScript or TypeScript, Nex CLI empowers you to effortlessly create backend solutions. From basic setups to advanced configurations, Nex CLI has everything you need to get started quickly and efficiently.
+Welcome to Nex CLI, the ultimate tool for streamlining Node.js application and API development. Whether you're coding in JavaScript or TypeScript, Nex CLI empowers you to seamlessly create backend solutions. From foundational setups to intricate configurations, Nex CLI provides all the essential features to kickstart your projects promptly and effectively.
 
 # Scaffolding
 
-Jumpstart your projects with ease, whether you're creating a lightweight Node.js app or a robust API.
+Initiate your projects effortlessly, whether you're crafting a lightweight Node.js application or a robust API.
 
-- Generate a Node.js application with Express and EJS templating
-- Generate a Node.js application with Express
-- Generate a Node.js application with Express and TypeScript
+- Generate a Node.js application with Express and EJS templating.
+- Generate a Node.js application with Express.
+- Generate a Node.js application with Express and TypeScript.
 
-# Database Integration
+# Seamless Integration with Existing Projects
 
-Nex CLI seamlessly integrates your application with your preferred databases.
-
-- MongoDB
-- SQL
-- SQLite
-- PostgreSQL
+Effortlessly integrate Nex CLI with your current projects, ensuring a smooth transition and enhanced development experience.
 
 # Test-Driven Development
 
-Nex CLI supports integration with the Jest testing framework for adding comprehensive tests to your application.
+Nex CLI seamlessly integrates with the Jest testing framework, facilitating the addition of comprehensive tests to your application, thus ensuring robustness and reliability.
 
-# Installation
-
-To install Nex CLI, run:
-
-```bash
-npm i @codetanna/nex-cli

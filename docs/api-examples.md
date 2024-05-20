@@ -45,6 +45,19 @@ npx cli add:service <service_name>
 
 ```
 
+## Add Linting
+Add eslint and prettier to your project
+
+```
+npx cli add:lint
+```
+## Add Testing
+Add Unit and integration tests to your project
+
+```
+npx cli add:test
+```
+
 ## Using flags
 
 * Create project with ejs

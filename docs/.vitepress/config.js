@@ -15,8 +15,8 @@ export default defineConfig({
       {
         text: 'Cli Documentation',
         items: [
-          { text: 'Installation', link: '/installation'},
           { text: 'Introduction', link: '/introduction'},
+          { text: 'Installation', link: '/installation'},
           { text: 'Quick Start', link: '/markdown-examples' },
           { text: 'Commands', link: '/api-examples' }
         ]
