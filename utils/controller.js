@@ -6,7 +6,8 @@ import {
 import { doesProjectExist } from './file.js';
 
 export default function addController(name) {
-  const controllerName = `${name.charAt(0).toLowerCase() + name.slice(1)}.controller`;
+  const controllerName = name.charAt(0).toLowerCase() + name.slice(1);
+  const controllerFunctionName = name.charAt(0).toUpperCase() + name.slice(1);
   const controllersDirectory = 'src/controllers';
   const isTypescript = doesProjectExist('tsconfig.json');
 
@@ -16,10 +17,10 @@ export default function addController(name) {
     }
 
     fs.writeFileSync(
-      `${controllersDirectory}/${controllerName}.${isTypescript ? 'ts' : 'js'}`,
+      `${controllersDirectory}/${controllerName}.controller.${isTypescript ? 'ts' : 'js'}`,
       isTypescript
-        ? typescriptControllerTemplate(controllerName)
-        : javascriptControllerTemplate(controllerName)
+        ? typescriptControllerTemplate(controllerFunctionName)
+        : javascriptControllerTemplate(controllerFunctionName)
     );
   } catch (error) {
     console.error('Error creating controller:', error.message);
