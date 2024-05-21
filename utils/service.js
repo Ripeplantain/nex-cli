@@ -4,7 +4,7 @@ import { doesProjectExist } from './file.js';
 
 export default function addService(name) {
   const serviceName = name.charAt(0).toLowerCase() + name.slice(1);
-  const serviceDirectory = 'src/controllers';
+  const serviceDirectory = 'src/service';
   const isTypescript = doesProjectExist('tsconfig.json');
 
   try {
@@ -14,7 +14,7 @@ export default function addService(name) {
 
     fs.writeFileSync(
       `${serviceDirectory}/${serviceName}.service.${isTypescript ? 'ts' : 'ts'}`,
-      serviceTemplate
+      serviceTemplate()
     );
   } catch (error) {
     console.error('Error creating service:', error.message);
