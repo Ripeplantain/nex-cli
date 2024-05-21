@@ -19,8 +19,6 @@ pids/
 # Directory for storing session data
 sessions/
 
-# Environment variables file
-.env
 
 # Editor directories and files
 .vscode/
