@@ -6,7 +6,9 @@ import {
 } from '../constants/modelTemplate.js';
 
 export default function addModel(name) {
-  const modelName = name.charAt(0).toUpperCase() + name.slice(1);
+  const modelName = name.charAt(0).toLowerCase() + name.slice(1);
+  const modelFunctionName =
+    modelName.charAt(0).toUpperCase() + modelName.slice(1);
   const modelsDirectory = 'src/models';
   const isTypescript = doesProjectExist('tsconfig.json');
 
@@ -16,10 +18,10 @@ export default function addModel(name) {
     }
 
     fs.writeFileSync(
-      `${modelsDirectory}/${modelName}.${isTypescript ? 'ts' : 'js'}`,
+      `${modelsDirectory}/${modelName}.model.${isTypescript ? 'ts' : 'js'}`,
       isTypescript
-        ? typescriptModelTemplate(modelName)
-        : javascriptModelTemplate(modelName)
+        ? typescriptModelTemplate(modelFunctionName)
+        : javascriptModelTemplate(modelFunctionName)
     );
   } catch (error) {
     console.error('Error creating model:', error.message);
