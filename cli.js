@@ -98,7 +98,6 @@ program
         console.log('ESLint is already installed');
       }
     });
-
     exec('npx eslint --version', (error, stdout) => {
       if (error) {
         console.error(`exec error: ${error}`);

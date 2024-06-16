@@ -33,3 +33,14 @@ export function inquireLinting() {
     },
   ]);
 }
+
+export function inquireDatabase() {
+  return inquirer.prompt([
+    {
+      type: 'list',
+      name: 'database',
+      message: 'What ORM would you like to use?',
+      choices: ['sequelize', 'mongoose', 'sequilize', 'prisma', 'drizzle'],
+    },
+  ]);
+}

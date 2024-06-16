@@ -23,11 +23,13 @@ async function addPrettier(directory) {
     );
     spinner.succeed('Prettier and plugins installed successfully! 🎉');
 
-    addPrettierConfig(directory);
+    await addPrettierConfig(directory);
 
     console.log('Prettier added successfully! 🎉');
   } catch (error) {
     console.error(error.message);
+  } finally {
+    spinner.stop();
   }
 }
 
@@ -54,9 +56,11 @@ export default async function addEsLint(directory) {
       JSON.stringify(packageJson, null, 2)
     );
 
-    addEsLintConfig(directory);
-    addPrettier(directory);
+    await addEsLintConfig(directory);
+    await addPrettier(directory);
   } catch (error) {
     console.error(error.message);
+  } finally {
+    spinner.stop();
   }
 }

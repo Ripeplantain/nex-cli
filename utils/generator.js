@@ -5,7 +5,7 @@ import { fileURLToPath } from 'url';
 
 import { initializeGitRepository, addGitIgnore } from './git.js';
 import addEsLint from './lint.js';
-import { inquireAddGit, inquireLinting } from './prompt.js';
+import { inquireAddGit, inquireLinting, inquireDatabase } from './prompt.js';
 import tsConfig from '../constants/tsConfig.js';
 
 const fileName = fileURLToPath(import.meta.url);
@@ -78,14 +78,14 @@ const inititalizeTypescript = program => {
 export const handleProjectCreation = async (name, projectType) => {
   switch (projectType) {
     case 'express-with-ejs':
-      generateExpressProject(name);
+      await generateExpressProject(name);
       break;
     case 'webapi-with-js':
-      generateJsBackendApi(name);
+      await generateJsBackendApi(name);
       break;
     case 'webapi-with-ts':
-      generateTsBackendApi(name);
-      inititalizeTypescript(name);
+      await generateTsBackendApi(name);
+      await inititalizeTypescript(name);
       break;
     default:
       console.log('Unknown project type');
@@ -94,13 +94,16 @@ export const handleProjectCreation = async (name, projectType) => {
 
   const gitAnswer = await inquireAddGit();
   if (gitAnswer.addGit) {
-    initializeGitRepository(name);
-    addGitIgnore(name);
+    await initializeGitRepository(name);
+    await addGitIgnore(name);
   }
 
   const lintingAnswer = await inquireLinting();
   if (lintingAnswer.addLinting) {
-    addEsLint(name);
+    await addEsLint(name);
     console.log('Lint added successfully! 🎉');
   }
+
+  const databaseAnswer = await inquireDatabase();
+  console.log('Database:', databaseAnswer.database);
 };
