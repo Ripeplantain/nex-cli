@@ -40,7 +40,18 @@ export function inquireDatabase() {
       type: 'list',
       name: 'database',
       message: 'What ORM would you like to use?',
-      choices: ['sequelize', 'mongoose', 'sequilize', 'prisma', 'drizzle'],
+      choices: ['sequelize', 'mongoose', 'prisma', 'drizzle'],
+    },
+  ]);
+}
+
+export function inquireDatabaseType() {
+  return inquirer.prompt([
+    {
+      type: 'list',
+      name: 'databaseType',
+      message: 'What type of database would you like to use?',
+      choices: ['mysql', 'postgres', 'sqlite', 'mssql'],
     },
   ]);
 }

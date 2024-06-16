@@ -5,8 +5,14 @@ import { fileURLToPath } from 'url';
 
 import { initializeGitRepository, addGitIgnore } from './git.js';
 import addEsLint from './lint.js';
-import { inquireAddGit, inquireLinting, inquireDatabase } from './prompt.js';
+import {
+  inquireAddGit,
+  inquireLinting,
+  inquireDatabase,
+  inquireDatabaseType,
+} from './prompt.js';
 import tsConfig from '../constants/tsConfig.js';
+import handleDatabaseCreation from './database.js';
 
 const fileName = fileURLToPath(import.meta.url);
 const dirname = path.dirname(fileName);
@@ -105,5 +111,10 @@ export const handleProjectCreation = async (name, projectType) => {
   }
 
   const databaseAnswer = await inquireDatabase();
-  console.log('Database:', databaseAnswer.database);
+  if (databaseAnswer.database) {
+    if (databaseAnswer.database !== 'mongoose') {
+      const databaseTypeAnswer = await inquireDatabaseType();
+      handleDatabaseCreation(databaseTypeAnswer.databaseType, name);
+    }
+  }
 };
