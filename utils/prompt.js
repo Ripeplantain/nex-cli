@@ -55,3 +55,25 @@ export function inquireDatabaseType() {
     },
   ]);
 }
+
+export function inquireGeneralDatabase() {
+  return inquirer.prompt([
+    {
+      type: 'list',
+      name: 'database',
+      message: 'What type of database would you like to use?',
+      choices: ['mysql', 'postgres', 'sqlite', 'mssql', 'mongodb'],
+    },
+  ]);
+}
+
+export function inquireDrizzleDatabase() {
+  return inquirer.prompt([
+    {
+      type: 'list',
+      name: 'database',
+      message: 'What type of database would you like to use?',
+      choices: ['mysql', 'postgres'],
+    },
+  ]);
+}

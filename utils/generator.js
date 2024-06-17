@@ -10,9 +10,15 @@ import {
   inquireLinting,
   inquireDatabase,
   inquireDatabaseType,
+  inquireGeneralDatabase,
+  inquireDrizzleDatabase,
 } from './prompt.js';
 import tsConfig from '../constants/tsConfig.js';
-import handleDatabaseCreation, { mongooseIntegration } from './database.js';
+import handleDatabaseCreation, {
+  mongooseIntegration,
+  prismaIntegration,
+  drizzleIntegration,
+} from './database.js';
 
 const fileName = fileURLToPath(import.meta.url);
 const dirname = path.dirname(fileName);
@@ -120,8 +126,16 @@ export const handleProjectCreation = async (name, projectType) => {
     case 'mongoose':
       mongooseIntegration(name);
       break;
-    case 'prisma':
-    case 'drizzle':
+    case 'prisma': {
+      const generalDatabaseAnswer = await inquireGeneralDatabase();
+      prismaIntegration(generalDatabaseAnswer.database, name);
+      break;
+    }
+    case 'drizzle': {
+      const generalDatabaseAnswer = await inquireDrizzleDatabase();
+      drizzleIntegration(generalDatabaseAnswer.database, name);
+      break;
+    }
     default:
       console.log('Unknown database type');
   }
