@@ -10,13 +10,11 @@ import {
   inquireLinting,
   inquireDatabase,
   inquireDatabaseType,
-  inquireGeneralDatabase,
   inquireDrizzleDatabase,
 } from './prompt.js';
 import tsConfig from '../constants/tsConfig.js';
 import handleDatabaseCreation, {
   mongooseIntegration,
-  prismaIntegration,
   drizzleIntegration,
 } from './database.js';
 
@@ -126,11 +124,6 @@ export const handleProjectCreation = async (name, projectType) => {
     case 'mongoose':
       mongooseIntegration(name);
       break;
-    case 'prisma': {
-      const generalDatabaseAnswer = await inquireGeneralDatabase();
-      prismaIntegration(generalDatabaseAnswer.database, name);
-      break;
-    }
     case 'drizzle': {
       const generalDatabaseAnswer = await inquireDrizzleDatabase();
       drizzleIntegration(generalDatabaseAnswer.database, name);

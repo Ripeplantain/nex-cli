@@ -258,10 +258,6 @@ export const mongooseIntegration = async directory => {
   }
 };
 
-export const prismaIntegration = async (database, directory) => {
-  console.log('Prisma integration coming soon!');
-};
-
 export const drizzleIntegration = async (database, directory) => {
   switch (database) {
     case 'mysql':

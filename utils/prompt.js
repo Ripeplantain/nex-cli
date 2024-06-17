@@ -40,7 +40,7 @@ export function inquireDatabase() {
       type: 'list',
       name: 'database',
       message: 'What ORM would you like to use?',
-      choices: ['sequelize', 'mongoose', 'prisma', 'drizzle'],
+      choices: ['sequelize', 'mongoose', 'drizzle'],
     },
   ]);
 }
