@@ -12,7 +12,7 @@ import {
   inquireDatabaseType,
 } from './prompt.js';
 import tsConfig from '../constants/tsConfig.js';
-import handleDatabaseCreation from './database.js';
+import handleDatabaseCreation, { mongooseIntegration } from './database.js';
 
 const fileName = fileURLToPath(import.meta.url);
 const dirname = path.dirname(fileName);
@@ -111,10 +111,18 @@ export const handleProjectCreation = async (name, projectType) => {
   }
 
   const databaseAnswer = await inquireDatabase();
-  if (databaseAnswer.database) {
-    if (databaseAnswer.database !== 'mongoose') {
+  switch (databaseAnswer.database) {
+    case 'sequelize': {
       const databaseTypeAnswer = await inquireDatabaseType();
       handleDatabaseCreation(databaseTypeAnswer.databaseType, name);
+      break;
     }
+    case 'mongoose':
+      mongooseIntegration(name);
+      break;
+    case 'prisma':
+    case 'drizzle':
+    default:
+      console.log('Unknown database type');
   }
 };

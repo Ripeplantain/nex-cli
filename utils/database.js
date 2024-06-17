@@ -3,6 +3,7 @@ import { exec } from 'child_process';
 import { promisify } from 'util';
 import fs from 'fs';
 import { sqliteTemplate, sqlTemplate } from '../constants/sequelizeTemplate.js';
+import mongooseTemplate from '../constants/mongooseTemplate.js';
 import { doesProjectExist } from './file.js';
 
 const execAsync = promisify(exec);
@@ -50,6 +51,39 @@ const addSequlizeConfig = async directory => {
   fs.writeFileSync(
     `${directory}/src/helper/database.${isTypescript ? 'ts' : 'js'}`,
     sqliteTemplate
+  );
+
+  const appData = fs.readFileSync(
+    `${directory}/src/app.${isTypescript ? 'ts' : 'js'}`,
+    'utf-8'
+  );
+
+  const appDataArray = appData.split('\n');
+
+  appDataArray.splice(
+    6,
+    0,
+    `import { connectDatabase } from './helper/database.js';`
+  );
+  appDataArray.splice(27, 0, `connectDatabase();`);
+  const updatedAppData = appDataArray.join('\n');
+
+  fs.writeFileSync(
+    `${directory}/src/app.${isTypescript ? 'ts' : 'js'}`,
+    updatedAppData
+  );
+};
+
+const addMongooseConfig = async directory => {
+  const isTypescript = doesProjectExist(`${directory}/tsconfig.json`);
+
+  if (!doesProjectExist(directory)) {
+    return;
+  }
+
+  fs.writeFileSync(
+    `${directory}/src/helper/database.${isTypescript ? 'ts' : 'js'}`,
+    mongooseTemplate
   );
 
   const appData = fs.readFileSync(
@@ -133,6 +167,17 @@ const handleDatabaseCreation = async (databaseType, directory) => {
       break;
     default:
       console.log('Unknown database type');
+  }
+};
+
+export const mongooseIntegration = async directory => {
+  const spinner = ora('Setting up Mongoose').start();
+  try {
+    await execAsync(`cd ${directory} && npm install mongoose --save`);
+    spinner.succeed('Mongoose setup completed successfully! 🎉');
+    await addMongooseConfig(directory);
+  } catch (error) {
+    console.error(error.message);
   }
 };
 
