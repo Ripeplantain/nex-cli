@@ -1,0 +1,5 @@
+
+{
+  "appUrl": "http://localhost:3000",
+  "dbUrl": "mongodb://localhost:27017/shorten-url"
+}

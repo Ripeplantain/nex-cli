@@ -1,9 +1,12 @@
 const mongooseTemplate = `import mongoose from 'mongoose';
 import logger from '../helper/logger.js';
+import config from 'config';
+
+const databaseUrl = config.get('dbUrl');
 
 export const connectDatabase = async () => {
     try {
-        await mongoose.connect('mongodb://localhost:27017/test', {
+        await mongoose.connect(databaseUrl, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
         });

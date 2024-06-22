@@ -3,7 +3,10 @@
 // eslint-disable-next-line import/no-unresolved
 import express, {Application, Response, Request} from 'express';
 import cors from 'cors';
+import config from 'config';
 import logger from './helper/logger';
+
+const appUrl: string = config.get('appUrl');
 
 const app: Application = express();
 
@@ -23,5 +26,5 @@ app.get('/', (req: Request, res: Response) => {
 });
 
 app.listen(3000, () => {
-  logger.info('Server is running on http://localhost:3000/ 😎...');
+  logger.info(`Server is running on ${appUrl} 😎...`);
 });

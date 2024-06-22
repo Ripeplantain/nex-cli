@@ -3,8 +3,8 @@ import logger from '../helper/logger.js';
 
 const sequelize = new Sequelize({
     dialect: 'sqlite',
-    storage: 'path/to/database.sqlite',
-    });
+    storage: './database.sqlite',
+});
 
 export const connectDatabase = async () => {
   try {
@@ -18,8 +18,11 @@ export const connectDatabase = async () => {
 
 const sqlTemplate = `import { Sequelize } from 'sequelize';
 import logger from '../helper/logger.js';
+import config from 'config';
 
-const sequelize = new Sequelize('enter database url');
+const databaseUrl = config.get('dbUrl');
+
+const sequelize = new Sequelize(databaseUrl);
 
 export const connectDatabase = async () => {
     try {

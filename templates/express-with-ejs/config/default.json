@@ -1,0 +1,10 @@
+
+{
+  "appUrl": "http://localhost:3000",
+  "database": {
+    "host": "localhost",
+    "username": "root",
+    "password": "root",
+    "database": "test"
+  }
+}

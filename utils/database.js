@@ -221,6 +221,7 @@ const sqliteIntegration = async directory => {
   const spinner = ora('Setting up Sequelize').start();
   try {
     await execAsync(`cd ${directory} && npm install sequelize sqlite3 --save`);
+    await execAsync(`cd ${directory} && touch database.sqlite`);
     spinner.succeed('Sequelize setup completed successfully! 🎉');
     await addSequlizeConfig(directory);
   } catch (error) {

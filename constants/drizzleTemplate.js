@@ -1,20 +1,21 @@
 const drizzleSqlTemplate = `import { drizzle } from "drizzle-orm/mysql2";
 import mysql from "mysql2/promise";
+import config from "config";
 
-const connetion = await mysql.createConnection({
-    host: "localhost",
-    user: "user",
-    database: "database",
-    password: "password",
-});
+const databaseUrl = config.get("dbUrl");
+
+const connetion = await mysql.createConnection(databaseUrl);
 
 export const db = drizzle(connetion);`;
 
 const drizzlePostgresTemplate = `import { drizzle } from "drizzle-orm/node-postgres";
+import config from "config";
 const { Client } from "pg";
 
+const databaseUrl = config.get("dbUrl");
+
 const client = new Client({
-    connectionString: "postgresql://user:password@localhost:5432/database",
+    connectionString: databaseUrl,
 });
 
 await client.connect();
