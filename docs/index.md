@@ -7,12 +7,12 @@ hero:
   text: "The next generation of cli tools"
   tagline: Streamline Your Workflow with Great Mastery
   actions:
-    - theme: alt
+    - theme: brand
       text: Installation
       link: /installation
-    - theme: brand
-      text: Quick Start
-      link: /markdown-examples
+    - theme: alt
+      text: Documentation
+      link: /api-examples
 
 
 features:

@@ -84,6 +84,13 @@ program
   });
 
 program
+  .command('add:database')
+  .description('Add a database to your project')
+  .action(() => {
+    console.log('Adding a database to your project 🧪');
+  });
+
+program
   .command('add:lint')
   .description('Add linting to your project')
   .action(() => {

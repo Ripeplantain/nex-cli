@@ -18,7 +18,10 @@ export default defineConfig({
           { text: 'Introduction', link: '/introduction'},
           { text: 'Installation', link: '/installation'},
           { text: 'Quick Start', link: '/markdown-examples' },
-          { text: 'Commands', link: '/api-examples' }
+          { text: 'Commands', link: '/api-examples' },
+          { text: 'Models', link: '/model' },
+          { text: 'Controllers and Services', link: '/logic'},
+          { text: 'Routes', link: '/route' },
         ]
       }
     ],
