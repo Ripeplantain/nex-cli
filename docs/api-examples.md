@@ -58,6 +58,14 @@ Add Unit and integration tests to your project
 npx cli add:test
 ```
 
+## Add Database Connection 
+
+Add database connection to your project
+
+```
+npx cli add:database
+```
+
 ## Using flags
 
 * Create project with ejs

@@ -9,7 +9,15 @@ import addRoute from './utils/route.js';
 import addService from './utils/service.js';
 import addMiddleware from './utils/middleware.js';
 import addTest from './utils/test.js';
-import inquireProjectTypePrompt from './utils/prompt.js';
+import inquireProjectTypePrompt, {
+  inquireDatabaseType,
+  inquireDatabase,
+  inquireDrizzleDatabase,
+} from './utils/prompt.js';
+import handleDatabaseCreation, {
+  mongooseIntegration,
+  drizzleIntegration,
+} from './utils/database.js';
 import { handleProjectCreation } from './utils/generator.js';
 import addEsLint from './utils/lint.js';
 
@@ -86,8 +94,26 @@ program
 program
   .command('add:database')
   .description('Add a database to your project')
-  .action(() => {
+  .action(async () => {
     console.log('Adding a database to your project 🧪');
+    const databaseAnswer = await inquireDatabase();
+    switch (databaseAnswer.database) {
+      case 'sequelize': {
+        const databaseTypeAnswer = await inquireDatabaseType();
+        handleDatabaseCreation(databaseTypeAnswer.databaseType, process.cwd());
+        break;
+      }
+      case 'mongoose':
+        mongooseIntegration(process.cwd());
+        break;
+      case 'drizzle': {
+        const generalDatabaseAnswer = await inquireDrizzleDatabase();
+        drizzleIntegration(generalDatabaseAnswer.database, process.cwd());
+        break;
+      }
+      default:
+        console.log('Unknown database type');
+    }
   });
 
 program
