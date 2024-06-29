@@ -1,5 +1,5 @@
 const sqliteTemplate = `import { Sequelize } from 'sequelize';
-import logger from '../helper/logger.js';
+import logger from '../helper/logger';
 
 const sequelize = new Sequelize({
     dialect: 'sqlite',
@@ -17,7 +17,7 @@ export const connectDatabase = async () => {
 `;
 
 const sqlTemplate = `import { Sequelize } from 'sequelize';
-import logger from '../helper/logger.js';
+import logger from '../helper/logger';
 import config from 'config';
 
 const databaseUrl = config.get('dbUrl');

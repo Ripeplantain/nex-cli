@@ -1,5 +1,5 @@
 const mongooseTemplate = `import mongoose from 'mongoose';
-import logger from '../helper/logger.js';
+import logger from '../helper/logger';
 import config from 'config';
 
 const databaseUrl = config.get('dbUrl');
